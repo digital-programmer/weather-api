@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <title>Weather API</title>
+  </head>
+  <body>
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+      <!-- header -->
+      <header class="pb-3 mb-4 mt-4 border-bottom">
+        <span class="fs-4">Weather App</span>
+      </a>
+      </header>
+
+       <!-- form -->
+      <div class="row align-items-center g-lg-5 py-5">
+        <div class="col-lg-7 text-center text-lg-start">
+          <h1 class="display-4 fw-bold lh-1 mb-3">Weather API</h1>
+          <p class="col-lg-10 fs-4">
+            Fill the form to get weather forecast of various
+            cities. Enjoy and explore!
+          </p>
+        </div>
+        <div class="col-md-10 mx-auto col-lg-5">
+          <fieldset>
+            <form class="p-4 p-md-5 border rounded-3 bg-light" action="/" method="post">
+              <div class="form-floating mb-3">
+                <input
+                name="city"
+                type="text"
+                class="form-control"
+                placeholder="Enter City Name..."
+                id="floatingInput"
+                required
+                />
+                <label for="floatingInput">Enter City Name...</label>
+              </div>
+
+              <input type="submit" class="w-100 btn btn-md btn-primary submit-button" value="Get Weather" />
+            </form>
+          </fieldset>
+        </div>
+      </div>
+      <% if(weather!=null) { %>
+        <% if(weather.success === true) { %>
+      <h3 class="pb-2 border-bottom"> Weather Report : <%= weather.city %></h3>
+                  <!-- results -->
+                  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+                    <div class="col d-flex align-items-start">
+                      <div>
+                        <h4 class="fw-bold mb-0">Temperature</h4>
+                        <p><%= weather.temperature %> &deg;c</p>
+                      </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                      <div>
+                        <h4 class="fw-bold mb-0">Wind Speed</h4>
+                        <p><%= weather.windspeed %> m/s</p>
+                      </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                      <div>
+                        <h4 class="fw-bold mb-0">Humidity</h4>
+                        <p><%= weather.humidity %> %</p>
+                      </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                      <div>
+                        <h4 class="fw-bold mb-0">Pressure</h4>
+                        <p><%= weather.pressure %> hPa</p>
+                      </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                      <div>
+                        <img
+                        src="https://openweathermap.org/img/w/<%= weather.icon %>.png"
+                        alt="Weather status"
+                      />
+                        <h4 class="fw-bold mb-0">Mood</h4>
+                        <p><%= weather.description %></p>
+                      </div>
+                    </div>
+                  </div>
+    </div>
+    <% } else {%>
+      <h3 class="pb-2 border-bottom"> Oops ! City not Found. Please try again...</h3>
+    <% } %>
+  <% } %>
+
+    <br />
+    
+  </body>
+</html>
