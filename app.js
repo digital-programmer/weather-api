@@ -21,7 +21,7 @@ app.post("/", (req, res) => {
 
   request(url, (error, response, body) => {
     const weatherJSON = JSON.parse(body);
-    // console.log(weatherJSON);
+    console.log(weatherJSON);
 
     if (weatherJSON.cod == "200") {
       let weather = {
@@ -56,5 +56,5 @@ app.post("/", (req, res) => {
 });
 
 app.listen(process.env.PORT || 3000, function () {
-  console.log("App listening on port 3000!");
+  console.log("Weather App is listening...");
 });
